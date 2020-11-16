@@ -1,0 +1,107 @@
+.row-header {
+  margin: 0px auto;
+  padding: 0px 0px;
+}
+.row-content {
+  margin: 0px auto;
+  padding: 50px 0px;
+  border-bottom: 1px ridge;
+  min-height: 400px;
+}
+.row-content dl {
+    color: rgb(150, 99, 0);
+}
+.footer {
+  background-color: rgb(150, 99, 0);;
+  margin: 0px auto;
+  padding: 20px 0px;
+    color: black;
+}
+.breadcrumb li {
+  margin: 0px auto;
+  padding: 0px 0px;
+  background: transparent;
+  color: rgb(150, 109, 0);
+}
+.jumbotron {
+  margin-top: 20px auto;
+  padding: 20px 0px;
+ 
+    margin: ;
+    max-width: 100%;
+max-height: 100%;
+  color: cyan;
+}
+.jumbotron background img{
+    height: 100%;
+}
+address {
+  font-size: 80%;
+  margin: 0px;
+  color: floralwhite;
+}
+body {
+  padding: 50px 0px 0px 0px;
+  z-index: 0;
+}
+.navbar-dark {
+  background-color: rgb(150, 99, 0);
+}
+.navbar a img {
+    height: 60px;
+    width: 80% 100%;
+    padding: 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+nav li a{
+    color: black;
+}
+.navbar-brand {
+   padding: 0px 0px 0px 0px;
+    margin: 0px 50px 0px 0px;
+}
+nav span {
+    margin: 4px;
+}
+
+
+.tab-content {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+.carousel {
+  background: darkred;
+}
+.carousel .carousel-item {
+  height: 300px;
+}
+.carousel .carousel-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 300px;
+}
+#carouselButton {
+  right: 0px;
+  position: absolute;
+  bottom: 0;
+}
+.modal .modal-header {
+    background: #512DA8;
+    color: floralwhite;
+} 
+.modal .modal-header button {
+
+    color: floralwhite;
+} 
+.modal .modal-body {
+    background: #9575CD;
+   
+} 
+.modal .modal-footer {
+    background: #9575CD;
+   
+} 
+

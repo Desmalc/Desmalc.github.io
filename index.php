@@ -10,15 +10,18 @@
 
   <title>Desmalc Software Developers</title>
 
-  <!-- Bootstrap Core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+  <!-- Bootstrap CSS from downloaded theme-->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap CSS from downloaded node_modules-->
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- font awesome plugin from node modules-->   
+<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+<!-- bootstrap social plugin for social media icons-->
+<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
 
-  <!-- Custom Fonts -->
-  
+  <!-- Custom Fonts from downloaded theme -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+     <!-- icons plugin downloaded frm d theme-->
   <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="css/shade.css">
 
@@ -28,11 +31,10 @@
 </head>
 
 <body id="page-top">
-
-  <!-- Navigation -->
-  <a class="menu-toggle rounded" href="#">
-    <i class="fas fa-bars"></i>
-  </a>
+<!-- Navigation -->
+<a class="menu-toggle rounded" href="#">
+<i class="fas fa-bars"></i>
+</a>
 <nav class="navbar navbar-dark bg-primary navbar-expand-sm fixed-top">
     <div class="container">
         <div class="row">
@@ -47,26 +49,27 @@
     <li class="nav-item"><a class="nav-link" href="aboutus.html"><i class="fa fa-info fa-lg"></i>About</a></li>
     <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-list fa-lg"></i>Menu</a></li>
     <li class="nav-item"><a class="nav-link" href="contactus.html"><i class="fa fa-address-card fa-lg"></i>Contact</a></li>
+    <li class="nav-item"><a class="nav-link" href="blog.php"><i class="fa fa-info fa-lg"></i>Blog</a></li>
     </ul>
         <span class="btn btn-primary navbar-text">
             <a data-toggle="modal" id="modalbutton" >Login</a>
         </span>
         <span class="btn btn-primary navbar-text">
-            <a data-toggle="modal" id="modalbutton" >Register as a Programmer</a>
+            <a href="register.php" >Register as a Programmer</a>
         </span>
     </div>
         
         <div class="col-3  offset-1 col-sm-2 offset-sm-2">
-            <a class="navbar-brand mr-20px " href="#"><h3 style="color:rgba(250, 255, 255, 0.1) 0%; font-family: fantasy;">Desmalc I.T</h3></a>
+            <a class="navbar-brand mr-20px " href="#"><h3 style="color:rgba(250, 255, 255, 0.1) 0%; font-family: reqqe;">Desmalc I.T</h3></a>
             </div>
-        <div class="col-2 offset-3 col-sm -3 offset-sm-0 order-sm-first" >
+        <div class="col-2 offset-3 col-sm-3 offset-sm-0 order-sm-first" >
         <img style="height: 40px; width:83px; padding: 0px 0px; margin: 0px 0px 0px 0px;"   src="img/blackdefault1.png"/>
             </div>   
     </div>
     </div>
     </nav>
     
-      <!-- a modal that is a form for the log in entry-->
+    <!-- a modal that is a form for the log in entry-->
     <div id="loginModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg" role="content">
         <div class="modal-content">
@@ -74,29 +77,33 @@
             <h4 class="modal-title">Login</h4>
             <button type="button" class="close" data-dismiss="modal">
             &times;</button>
+    <!-- if a login error occurs, display it here-->
+     <?php
+            $username = "";
+    if ( isset($_SESSION["error"]) ) {
+        echo('<p style="color:red">'.$_SESSION["error"]."</p>\n");
+        unset($_SESSION["error"]);
+    }
+?>
             </div>
         <div class="modal-body">
-                          <form>
-                                <div class="row form-group">
-                               
-                                    <div class="form-group COL-12 col-sm-4">
-                                        <label class="sr-only" for="exampleInputEmail3">Email address</label>
-                                        <input type="email" class="form-control form-control-sm mr-1" id="exampleInputEmail3" placeholder="Enter email">
-                                    </div>
-                                    <div class="form-group COL-12 col-sm-4">
-                                        <label class="sr-only" for="exampleInputPassword3">Password</label>
-                                        <input type="password" class="form-control form-control-sm mr-1" id="exampleInputPassword3" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-auto">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox">
-                                            <label class="form-check-label"> Remember me</label>
-                                        </div>
-                                    </div>
-                                </div>      
-                        </form>
+        <form method="POST" action="login.php?>">
+        <div class="row form-group">
+         <div class="form-group col-12 col-sm-4">
+        <label class="sr-only" for="exampleInputEmail3">Email</label>
+        <input type="email" class="form-control form-control-sm mr-1" id="exampleInputEmail3" placeholder="Enter email" name="email"  value="<?= htmlentities($username) ?>"> </div>
+         <div class="form-group COL-12 col-sm-4">
+        <label class="sr-only" for="exampleInputPassword3">Password</label>
+         <input type="password" class="form-control form-control-sm mr-1" id="exampleInputPassword3" name="pass" placeholder="Password"></div>
+         <div class="col-sm-auto">
+        <div class="form-check">
+         <input class="form-check-input" type="checkbox" value="clicked">
+        <label class="form-check-label"> Remember me</label> </div>
+        </div>
+        </div>      
+         </form>
              </div>
-                        <div class="modal-footer">
+        <div class="modal-footer">
                             <div class="form-row">
                                 <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
                                 <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>
@@ -105,13 +112,13 @@
                     </div>
                 </div>
             </div>
-    <!-- a modal for the reserve table form-->
+    <!-- a modal for the request service form-->
     <div id="Reservemodal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-lg" role="content">
                     <!-- Modal itself-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Request for a Service</h4>
+                            <h4 class="modal-title">Contact Us</h4>
                             <button type="button" class="close" data-dismiss="modal"> &times;</button>
                         </div>
                         <div class="modal-body">
@@ -193,49 +200,41 @@
     
     
   <!-- Header -->
-  <header class="masthead d-flex">
+  <header class="masthead d-flex" >
     <div class="container text-left my-auto" >
       <h2 class="mb-1">Desmalc software<br> development services(Desmalc I.T)</h2>
       <h5 class="mb-5">
         <em>At Desmalc I.T, we take inspiration from the World's best software development technologies and create unique software services and products across all platform ranging from website development, Web Applications development, Mobile app Dev, Digital Marketing solutions and E-commerce sites that keep our esteemed customers completely satisfied. Our thoroughly thoughtout programs and website designs will give you all the technological integration you desire</em>
       </h5>
-      <a data-toggle="modal" role="button" style="background-color: rgb(170, 99, 0);" class="btn btn-primary btn-xl js-scroll-trigger nav-link " id="reservebutton" data-toggle="modal"><h4>Request for Our Services</h4></a>
+      <a data-toggle="modal" role="button" style="background-color: rgb(170, 99, 0); float: left;" class="btn  btn-xs js-scroll-trigger nav-link " id="reservebutton"><h4>Contact Us</h4></a>
     </div>
   </header>
 
   <!-- About -->
   <section class="content-section bg-light" id="about">
     <div class="container text-center">
-      <div class="row">
-        <div class="col-lg-10 mx-auto">
-                    <div class="container">
-        <div class="row row-content">
-        <div class="col">
+      <div class="row row-content">
+        <div class="col-lg-10 col mx-auto">
             <div id="mycarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                <img class="d-block img-fluid"
-                     src="img/desmalc.jpg" alt="website developer">
-                    <div class="carousel-caption d-none d-md-block">
-                     <h2>Website developer<span class="badge badge-danger">HOT</span><span class="badge badge-pill badge-secondary">$2.5</span></h2>
-                <p>A unique combination of Indian Uthappam  (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.</p>
+                <img class="d-block img-fluid" src="img/desmalc.jpg" alt="Desmalc">
+                    <div class="carousel-caption d-none d-md-inline">
+                     <h2>Web App developer<span class="badge badge-danger">HOT</span><span class="badge badge-pill badge-secondary">$55</span></h2>
+                <p>A proficient web app developer applying various technologies including PHP, NodeJS, Angular, Bootstrap, Ionic-Cordova for web app and Mobile App devlopment(andriod development).</p>
                     </div>
                 </div>
-                <div class="carousel-item">
-                     <img class="d-block img-fluid"
-                     src="img/bluecover.png" alt="web services">
-                    <div class="carousel-caption d-none d-md-block">
-                 <h2>WEb applications Development<span class="badge badge-danger">NEW</span></h2>
-                <p class="d-none d-sm-block">Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person </p>
-                </div>
+                <div style="background-color: aliceblue; color: rgb(170, 99, 0);" class="carousel-item">
+                    <h2>Desmond-Web App developer<span class="badge badge-danger">HOT</span><span class="badge badge-pill badge-secondary">$55</span></h2>
+                <h5>A proficient web app developer applying various technologies including PHP, NodeJS, Angular, Bootstrap, Mysql, NoSQL(MongoDB), Nativescript, Ionic-Cordova for web app and Mobile App devlopment(andriod development).</h5>
+ 
                 </div>
                 <div class="carousel-item">
-                     <img class="d-block img-fluid"
-                     src="img/whitedefault.png" alt="digitalmarketing">
+                     <img class="d-block img-fluid" src="img/blackdefault.png" alt="digital marketing">
                     <div class="carousel-caption d-none d-md-block">
                 <h2>Digital marketing</h2>
-                <h4>Executive Chef</h4>
-                <p>Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. </p>
+                <h4>Services</h4>
+                <p>Sophisticated and modern approach to digital marketing in order to maximize sales and improve customer influx </p>
                 </div>
                     </div>
                 </div>
@@ -249,24 +248,21 @@
                 <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next"><span class="carousel-control-next-icon"></span></a>
                 <!--to add pause n play buttons-->
                 <!--a pause button--> 
-                <div class="btn-group" id="carouselButton"> 
-               <button class="btn  btn-sm" style="background-color: darkcyan; color: white;" id="carouselButton"><span class="fa fa-pause"></span></button> 
-                </div>
-               
+                
+  <button class="btn btn-danger btn-sm" style="background-color: rgb(170, 99, 0);" id="carouselButton">
+                        <span id="carousel-button-icon" class="fa fa-pause"></span>
+                    </button>
             </div>
             </div>
         </div>
         </div>
-      </div>
-    </div>
-      </div>
   </section>
 
   <!-- Services -->
   <section class="content-section bg-primary text-white text-center" id="services">
     <div class="container">
       <div class="content-section-heading">
-        <h3 class="text-secondary mb-0">Services</h3>
+        <h3 class="mb-0">Services!!!</h3>
         <h2 class="mb-5">What We Offer</h2>
       </div>
       <div class="row">
@@ -284,9 +280,9 @@
             <i class="icon-pencil"></i>
           </span>
           <h4>
-            <strong>Redesigned</strong>
+            <strong>Andriod Development</strong>
           </h4>
-          <p class="text-faded mb-0">Freshly redesigned apps for Modern and constantly emerging devices</p>
+          <p class="text-faded mb-0">Building of mobile Apps for andriod Native environment</p>
         </div>
         <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
           <span class="service-icon rounded-circle mx-auto mb-3">
@@ -295,7 +291,7 @@
           <h4>
             <strong>Digital Marketing Services</strong>
           </h4>
-          <p class="text-faded mb-0">We carry out digital marketing for both online and offline businesses/organisations/government outfits
+          <p class="text-faded mb-0">We carry out digital marketing for both online and offline businesses/organisations/government outfits to help create awareness and maximize customer influx
             <i class="fas fa-heart"></i>
             </p>
         </div>
@@ -318,7 +314,7 @@
       <h4 class="mx-auto mb-5">Welcome to
         <em>your</em>
         next website/Mobile app!</h4>
-      <a class="btn btn-primary btn-xl"  data-toggle="modal" role="button" style="background-color: rgb(170, 99, 0);"  id="reservebutton" data-toggle="modal" href="https://startbootstrap.com/theme/stylish-portfolio/">Request Our Services</a>
+      <a class="btn btn-primary btn-xl"  style="background-color: rgb(170, 99, 0);" href="tel: +2347064812639"><i class="fa fa-phone mr-2"></i>Request Our Services</a>
     </div>
   </section>
 
@@ -335,7 +331,7 @@
             <div class="caption">
               <div class="caption-content">
                 <div class="h2">Lady-Lilac-Stores.business.site</div>
-                <p class="mb-0">An online business card built to give contact and google map info about the store, <b>click to visit site!</b></p>
+                <p class="mb-0">An online business card built to give contact and google map information about the store, <b>click to visit site!</b></p>
               </div>
             </div>
             <img class="img-fluid" src="img/portfolio-3.jpg" alt="Alcoholic beverage">
@@ -349,7 +345,7 @@
                 <p class="mb-0">An online site built by desmalc developers to host the group, <b>click to visit site!</b></p>
               </div>
             </div>
-            <img class="img-fluid" src="img/portfolio-1.jpg"  alt="Freelance developer">
+            <img class="img-fluid" src="img/portfolio-1.jpg"  alt="Website developer">
           </a>
         </div>
         <div class="col-lg-6">
@@ -360,7 +356,7 @@
                 <p class="mb-0">Currently building a mobile app that helps you with timeous forex indicators, <b>click to visit site!</b></p>
               </div>
             </div>
-            <img class="img-fluid" src="img/portfolio-4.jpg" alt="">
+            <img class="img-fluid" src="img/portfolio-4.jpg" alt="Forex">
           </a>
         </div>
       </div>
@@ -371,8 +367,8 @@
   <section class="content-section bg-primary text-white">
     <div class="container text-center">
       <h5 class="mb-4">At this point of our journey, I'm pretty sure the buttons below must be impossible to resist, don't fight it, just click either...</h5>
-      <a   data-toggle="modal" role="button"   style="color: black;" id="reservebutton" data-toggle="modal" class="btn btn-xl btn-light mr-4">Request<br> Our<br> Services</a>
-      <a href="#!" class="btn btn-xl btn-dark">Contact <br>Us</a>
+      <a href="mailto:izudesmond48@gmail.com" style="color: black;"  class="btn btn-xl btn-light mr-1"><i class="fa fa-envelope mr-2"></i>Request<br> Our Services</a>
+      <a href="tel:+2347064812639" class="btn btn-xl btn-dark"><i class="fa fa-phone"></i>Contact <br>Us</a>
     </div>
   </section>
 
@@ -387,6 +383,7 @@
                         <li><a href="aboutus.html">About</a></li>
                         <li><a href="#">Menu</a></li>
                         <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="blog.php">Blog</a></li>
                     </ul>
                 </div>
                 <div class="col-7 col-sm-5">
@@ -395,7 +392,7 @@
 		              Office 4, by City plaza, off Kashamu Street<br>
 		              Area 8, Abuja<br>
 		              Nigeria<br>
-		              <i class="fa fa-phone fa-lg"></i>: +234 7064 812639<br>
+		              <i class="fa fa-phone fa-lg"></i>: +2347064812639<br>
                         <i class="fa fa-envelope fa-lg"></i>: <a href="mailto:izudesmond48@gmail.com">Izudesmond48@gmail.com</a>
 		           </address>
                 </div>
@@ -403,7 +400,8 @@
                     <p>Follow our pages on the various social media platforms by clicking on any of the icons below</p>
                     <div>
                        
-                        <a class="btn btn-social-icon btn-facebook"href="http://www.facebook.com/izuchukwu.desmond7"><i class="fa fa-facebook fa-lg"></i></a>
+                        <a class="btn btn-social-icon btn-facebook" ref="http://www.facebook.com/izuchukwu.desmond7"><i class="fa fa-facebook fa-lg"></i></a>
+                        
                         <a class="btn btn-social-icon btn-linkedin"href="http://www.linkedin.com/in/"><i class="fa fa-linkedin fa-lg"></i></a>
                         <a class="btn btn-social-icon btn-twitter"href="http://twitter.com/"><i class="fa fa-twitter fa-lg"></i></a>
                         <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube fa-lg"></i></a>
@@ -413,7 +411,7 @@
            </div>
              <div class="row justify-content-center">             
                 <div class="auto">
-                    <h5>© Desmalc-software developers 2020|Powered by Izu Desmond</h5>
+                    <h5>©Desmalc-software developers 2020|Powered by Izu Desmond</h5>
                 </div>
            </div>
         </div>
